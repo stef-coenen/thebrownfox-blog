@@ -28,7 +28,7 @@ window.Lube = (function ($, ns) {
 
     ns.modules = function () {
         return {
-            toggle: new ns.Toggle(),
+            //toggle: new ns.Toggle(),
             googlemaps: new ns.Googlemaps()
         };
     };

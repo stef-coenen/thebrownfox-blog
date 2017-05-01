@@ -13,9 +13,9 @@ gulp.task('copy-dependencies', function() {
     gulp.src(['./node_modules/jquery/dist/jquery.js'])
         .pipe(gulp.dest('./design/js/lib/jquery'));
 
-    /*gulp.src(['./node_modules/bootstrap/js/dist/util.js',
-             './node_modules/bootstrap/js/dist/carousel.js'])
-        .pipe(gulp.dest('./design/js/lib/bootstrap'))*/
+    gulp.src(['./node_modules/bootstrap/js/dist/util.js',
+             './node_modules/bootstrap/js/dist/collapse.js'])
+        .pipe(gulp.dest('./design/js/lib/bootstrap'))
 
     gulp.src(['./node_modules/bootstrap/scss/**/_*.scss'])
         .pipe(gulp.dest('./design/scss/vendor/bootstrap'));
@@ -26,10 +26,6 @@ gulp.task('compile-js', function() {
              './design/js/lib/bootstrap/**/*.js'])
         //.pipe(uglify().on('error', gutil.log))
         .pipe(concat('/lib.js'))
-        .pipe(gulp.dest('./design/js/dist/'));
-
-    gulp.src(['./design/js/lib/google/*.js'])
-        //.pipe(uglify().on('error', gutil.log))
         .pipe(gulp.dest('./design/js/dist/'));
 
     gulp.src(['./design/js/app/components/*.js',
