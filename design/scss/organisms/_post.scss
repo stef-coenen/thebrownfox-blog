@@ -1,7 +1,17 @@
 .post-content {
+    margin-top: 4rem;
     > * {
         max-width: 55rem;
         margin-left: auto;
         margin-right: auto;
+    }
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    a {
+        font-weight: bold;
+        color: $smokey-blue;
     }
 }

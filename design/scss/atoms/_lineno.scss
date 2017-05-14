@@ -1,7 +1,8 @@
 .lineno {
-    border-right: solid 1px $body-color;
-    padding-right: 0.2rem;
+    border-right: solid 1px $hairline-color;
+    padding-right: 0.5rem;
     padding-left: 0.2rem;
     margin-right: 0.5rem;
     background-color: $lineno-background;
+    color: $lineno-color;
 }

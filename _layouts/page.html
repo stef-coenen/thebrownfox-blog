@@ -3,7 +3,7 @@
 {% include head.html %}
 
 <body>
-    <header>
+    <header class="page-header">
         <div class="container">
             <nav class="navbar navbar-toggleable-md navbar-light">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@
     <section class="container">
         {{ content }}
     </section>
-    <footer>
+    <footer class="page-footer">
         <div class="container">
             &copy; {{ site.time | date: '%Y' }} | {{ site.title }}
         </div>
