@@ -17,6 +17,8 @@ My guess would be that you do this to have an understandable architecture for yo
     }
 {% endhighlight %}
 
+![Alignment of the search icon]({{ site.baseurl }}/design/img/2017-05-09/search-alignment.png)
+
 But where do you put it? If you don't have much structure, you might just put it into the header file and be done with it.
 
 But as it goes later on you will of course need that same styling applied on the search. That is, for some crazy reason the search should also appear half-way the page (perhaps someone from marketing asked you?). So what do you do, you change the selector and create the following:
@@ -35,11 +37,13 @@ Let's take the search component in the header as an example. This component has 
 
 For these components the header would be an organism with the main goal to hold the components and possibly do adjustments to the grid system. In the header you would have the logo, the navigation and the search component. These would all be molecules. If we then zoom in further onto the search molecule the input and the button would both be atoms. As these are the smallest styled elements on the page.
 
+![Header marked with the different types of components]({{ site.baseurl }}/design/img/2017-05-09/header-marked.png)
+
 The folder/file structure of this approach would look like this:
 
 ![Folder structure]({{ site.baseurl }}/design/img/2017-05-09/folder-structure.png)
 
-In my normal setup the main entry file for the sass setup would be the following:
+If we then hop over to the sass files. In my normal setup the main entry file for the sass setup would be the following:
 
 {% highlight css linenos %}
     @import 'mixins/mixins';
