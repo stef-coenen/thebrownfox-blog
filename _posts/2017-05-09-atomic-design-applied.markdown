@@ -5,11 +5,11 @@ date:   2017-05-09 18:00:00 +0200
 categories: atomic sass
 ---
 
-Did you ever feel the need to give your sass files a bit more meaning? Than this one is for you. You might have read the [book "Atomic Design"](http://bradfrost.com/blog/post/atomic-web-design/) from Brad Frost. All the credit of this approach ofcourse goes to him. In this blog post however I will go into detail of how to put this in practice on your day to day work with your sass setup.
+Did you ever feel the need to give your sass files a bit more meaning? Than this one is for you. You might have read the [book "Atomic Design"](http://bradfrost.com/blog/post/atomic-web-design/) from Brad Frost. All the credit of this approach of course goes to him. In this blog post however I will go into detail of how to put this in practice on your day to day work with your sass setup.
 
-The approach I'm about to demonstrate you is created to give a meaningfull structure to your sass files. So let's start with asking yourself how do I strucuture my sass files? Do I just put them all in my sass folder? Do I create a components folder for components? Or another approach? And why do you do this?
+The approach I'm about to demonstrate you is created to give a meaningful structure to your sass files. So let's start with asking yourself how do I structure my sass files? Do I just put them all in my sass folder? Do I create a components folder for components? Or another approach? And why do you do this?
 
-My guess would be that you do this to have an understandable architecture for your files. Let's take an example, you are finishing up the header and start work on the search inside of the header. You have some general button styling. But for the search component it should of course hold a specific icon. And that icon should match the size of the input box next to it. So you might ceate the following style rule:
+My guess would be that you do this to have an understandable architecture for your files. Let's take an example, you are finishing up the header and start work on the search inside of the header. You have some general button styling. But for the search component it should of course hold a specific icon. And that icon should match the size of the input box next to it. So you might create the following style rule:
 
 {% highlight css linenos %}
     .header .search .btn-search {
@@ -19,7 +19,7 @@ My guess would be that you do this to have an understandable architecture for yo
 
 But where do you put it? If you don't have much structure, you might just put it into the header file and be done with it.
 
-But as it goes later on you will of course need that same styling applied on the search. That is, for some crazy reason the search should also appear half-way the page (perhaps someone from markting asked you?). So what do you do, you change the selector and create the following:
+But as it goes later on you will of course need that same styling applied on the search. That is, for some crazy reason the search should also appear half-way the page (perhaps someone from marketing asked you?). So what do you do, you change the selector and create the following:
 
 {% highlight css linenos %}
     .search .btn-search {
@@ -81,4 +81,4 @@ Inside the atoms folder we would then have a partial sass file called "_atoms.sc
     @import 'img';
 {% endhighlight %}
 
-To conclude, the setup explained in this article could help you create a more manageable structure for your sass files. While also assisting in keeping your styling consistent accross the site/app. As elements are likely to be styled twice.
+To conclude, the setup explained in this article could help you create a more manageable structure for your sass files. While also assisting in keeping your styling consistent across the site/app. As elements are likely to be styled twice.
