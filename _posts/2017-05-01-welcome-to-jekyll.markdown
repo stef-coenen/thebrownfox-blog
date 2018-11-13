@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Initial post"
-date:   2017-05-08 17:10:00 +0200
+title: 'Initial post'
+date: 2017-05-08 17:10:00 +0200
 categories: initial-post
 ---
 

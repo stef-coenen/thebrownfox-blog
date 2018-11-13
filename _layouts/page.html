@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include head.html %}
+    {% include head.html %}
 
-<body>
-    <header class="page-header">
-        <div class="container">
-            <nav class="navbar navbar-toggleable-md navbar-light">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a href="/" class="navbar-brand" title="Home"><img src="{{ site.baseurl }}/design/img/logo-thebrownfox.svg" width="100" height="100" alt="{{ site.title }}"/></a>
-                <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ site.baseurl }}/about/">About</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <section class="container">
-        {{ content }}
-    </section>
-    <footer class="page-footer">
-        <div class="container">
-            &copy; {{ site.time | date: '%Y' }} | {{ site.title }}
-        </div>
-    </footer>
-    {% include foot.html %}
-</body>
-
+    <body>
+        <header class="page-header">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a href="/" class="navbar-brand" title="Home">
+                        <img src="{{ site.baseurl }}/design/img/logo-thebrownfox.svg" class="logo"/>
+                        <h1 class="title">The brown Fox</h1>
+                    </a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <div class="navbar-nav ml-auto">
+                            <div class="quick-links vertical">
+                                <a class="nav-link quick-link" href="https://thebrownfox.be/projects.html">References</a >
+                                <a class="nav-link quick-link" href="https://thebrownfox.be/about-me.html">About</a >
+                                <a class="nav-link quick-link" href="https://blog.thebrownfox.be" target="_blank" rel="noopener">Site</a >
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="container">{{ content }}</section>
+        </main>
+        <footer class="page-footer">
+            <div class="container">&copy;
+                {{ site.time | date: '%Y' }}
+                |
+                {{ site.title }}</div>
+        </footer>
+        {% include foot.html %}
+    </body>
 </html>

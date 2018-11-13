@@ -3,6 +3,7 @@ window.Lube = (function($, ns) {
 
     var cfg = {
         cache: {
+            linkContainer: '[data-href]',
             topEqualHeightBoxes: [
                 //{ selector: '.testimonial > p', responsive: true, ignoreOffset: true }
             ]
@@ -11,7 +12,9 @@ window.Lube = (function($, ns) {
             scrolling: 'scrolling'
         },
         events: {
-            scroll: 'scroll'
+            scroll: 'scroll',
+            click: 'click',
+            mousedown: 'mousedown'
         }
     };
 
@@ -33,24 +36,50 @@ window.Lube = (function($, ns) {
         bindEvents: function(classes, events) {
             var self = this,
                 settings = cfg,
-                cache = settings.cache;
+                cache = settings.cache,
+                events = settings.events;
 
             this.win.on(events.scroll, function() {
                 self.body.addClass(classes.scrolling);
 
-                ns.fn.delayedEvent(function() {
-                    self.body.removeClass(classes.scrolling);
-                }, 100, events.scroll);
+                ns.fn.delayedEvent(
+                    function() {
+                        self.body.removeClass(classes.scrolling);
+                    },
+                    100,
+                    events.scroll
+                );
             });
 
             this.win.on(events.resize, function() {
-                ns.fn.delayedEvent(function() {
-                    self.topEqualHeightHandler(cache.topEqualHeightBoxes, true);
-                }, 200, 'resizeEqualHeight');
+                ns.fn.delayedEvent(
+                    function() {
+                        self.topEqualHeightHandler(cache.topEqualHeightBoxes, true);
+                    },
+                    200,
+                    'resizeEqualHeight'
+                );
             });
 
             this.win.on(events.load, function() {
                 self.topEqualHeightHandler(cache.topEqualHeightBoxes, false);
+            });
+
+            this.linkContainer = $(cache.linkContainer);
+
+            this.linkContainer.on(events.click, function(e) {
+                if (!$(e.target).is('a')) {
+                    window.location = $(this).data('href');
+                    return false;
+                }
+            });
+
+            // Middle mouse click for open in new tab
+            this.linkContainer.on(events.mouseDown, function(e) {
+                if (!$(e.target).is('a') && e.which == 2) {
+                    window.open($(this).data('href'), '_blank');
+                    return false;
+                }
             });
         },
 
@@ -60,9 +89,7 @@ window.Lube = (function($, ns) {
             if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
                 var msViewportStyle = document.createElement('style');
                 msViewportStyle.appendChild(
-                    document.createTextNode(
-                        '@-ms-viewport{width:auto!important}'
-                    )
+                    document.createTextNode('@-ms-viewport{width:auto!important}')
                 );
                 document.querySelector('head').appendChild(msViewportStyle);
             }
@@ -70,11 +97,11 @@ window.Lube = (function($, ns) {
         bindScrollTopEvent: function() {
             var self = this;
             $('a[href="#top"]').click(function() {
-                self.body.animate({ scrollTop: 0 }, "slow");
+                self.body.animate({ scrollTop: 0 }, 'slow');
                 return false;
             });
         }
     };
 
     return ns;
-}(window.jQuery, window.Lube || {}));
+})(window.jQuery, window.Lube || {});

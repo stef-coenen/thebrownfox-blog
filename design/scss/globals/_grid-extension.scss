@@ -1,3 +1,52 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 .eh-grid {
     display: flex;
+}
+
+.row {
+    &-gutterless {
+        & {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        [class*='col-'] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    &-narrow {
+        & {
+            margin-left: -0.3rem;
+            margin-right: -0.3rem;
+        }
+        [class*='col-'] {
+            padding-left: 0.3rem;
+            padding-right: 0.3rem;
+        }
+    }
+    &-narrow-vertical {
+        & {
+            margin-top: -0.3rem;
+            margin-bottom: -0.3rem;
+        }
+        [class*='col-'] {
+            padding-top: 0.3rem;
+            padding-bottom: 0.3rem;
+        }
+    }
+}
+
+[class*='col-'] {
+    &.pull-right {
+        order: 10;
+    }
 }

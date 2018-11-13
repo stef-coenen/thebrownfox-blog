@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Atomic design principles applied"
-date:   2017-05-09 18:00:00 +0200
+title: 'Atomic design principles applied'
+date: 2017-05-09 18:00:00 +0200
 categories: atomic sass
+image: 2017-05-09/header-marked.png
 ---
 
 Did you ever feel the need to give your sass files a bit more meaning? Than this one is for you. You might have read the [book "Atomic Design"](http://bradfrost.com/blog/post/atomic-web-design/) from Brad Frost. All the credit of this approach of course goes to him. In this blog post however I will go into detail of how to put this in practice on your day to day work with your sass setup.
@@ -12,9 +13,9 @@ The approach I'm about to demonstrate you is created to give a meaningful struct
 My guess would be that you do this to have an understandable architecture for your files. Let's take an example, you are finishing up the header and start work on the search inside of the header. You have some general button styling. But for the search component it should of course hold a specific icon. And that icon should match the size of the input box next to it. So you might create the following style rule:
 
 {% highlight css linenos %}
-    .header .search .btn-search {
-        line-height: 1.4rem;
-    }
+.header .search .btn-search {
+    line-height: 1.4rem;
+}
 {% endhighlight %}
 
 ![Alignment of the search icon]({{ site.baseurl }}/design/img/2017-05-09/search-alignment.png)
@@ -24,9 +25,9 @@ But where do you put it? If you don't have much structure, you might just put it
 But as it goes later on you will of course need that same styling applied on the search. That is, for some crazy reason the search should also appear half-way the page (perhaps someone from marketing asked you?). So what do you do, you change the selector and create the following:
 
 {% highlight css linenos %}
-    .search .btn-search {
-        line-height: 1.4rem;
-    }
+.search .btn-search {
+    line-height: 1.4rem;
+}
 {% endhighlight %}
 
 After which your styling will be good. But your styling rule will (by accident) still remain in the header file. This shouldn't feel good of course as the search is not part of just the header anymore. So it might be a good idea to approach this differently from the start and put your search in a different file from the beginning.
@@ -46,19 +47,20 @@ The folder/file structure of this approach would look like this:
 If we then hop over to the sass files. In my normal setup the main entry file for the sass setup would be the following:
 
 {% highlight css linenos %}
-    @import 'mixins/mixins';
+@import 'mixins/mixins';
 
-    @import 'globals/variables';
+@import 'globals/variables';
 
-    @import 'vendor/vendor';
+@import 'vendor/vendor';
 
-    @import 'globals/globals';
+@import 'globals/globals';
 
-    @import 'atoms/atoms';
+@import 'atoms/atoms';
 
-    @import 'molecules/molecules';
+@import 'molecules/molecules';
 
-    @import 'organisms/organisms';
+@import 'organisms/organisms';
+
 {% endhighlight %}
 
 I'd start by loading the mixins and variables as these can then be used further down.
@@ -69,20 +71,21 @@ Then we include the globals, the globals are common styling rules shared by all 
 
 And then we load the atoms, molecules and organisms in that order so it all so bigger components overrule the smaller ones.
 
-Inside the atoms folder we would then have a partial sass file called "_atoms.scss". Which on his turn includes all the atoms, this causes the main entry file to be much more lightweight and more readable.
+Inside the atoms folder we would then have a partial sass file called "\_atoms.scss". Which on his turn includes all the atoms, this causes the main entry file to be much more lightweight and more readable.
 
 {% highlight css linenos %}
-    @import 'body';
+@import 'body';
 
-    @import 'ul';
+@import 'ul';
 
-    @import 'btn';
+@import 'btn';
 
-    @import 'input';
+@import 'input';
 
-    @import 'nav';
+@import 'nav';
 
-    @import 'img';
+@import 'img';
+
 {% endhighlight %}
 
 To conclude, the setup explained in this article could help you create a more manageable structure for your sass files. While also assisting in keeping your styling consistent across the site/app. As elements are likely to be styled twice.

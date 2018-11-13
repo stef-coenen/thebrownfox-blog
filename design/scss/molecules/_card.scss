@@ -1,0 +1,74 @@
+.card {
+    border-radius: 0;
+    border: 0;
+    .card-img {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    &.card-image-effect {
+        background-size: cover;
+        text-align: center;
+        height: 13rem;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        padding: 3rem;
+        .card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transform: scale(1);
+            transition: transform 0.2s;
+            &:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: block;
+                content: '';
+                background-color: rgba($white, 0.8);
+                opacity: 0;
+                transition: opacity 0.15s;
+            }
+        }
+        > *:not(.card-img) {
+            opacity: 0;
+            transition: opacity 0.2s;
+            position: relative; // Force remaining above the background image that scales
+        }
+        &:hover {
+            .card-img {
+                transform: scale(1.1);
+                &:after {
+                    opacity: 1;
+                }
+            }
+            > *:not(.card-img) {
+                opacity: 1;
+            }
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+        }
+        @include media-breakpoint-down(sm) {
+            height: auto;
+            padding: 0;
+            margin-bottom: 4rem;
+            .card-img {
+                position: static;
+                transform: scale(1);
+                margin-bottom: 1rem;
+            }
+            > *:not(.card-img) {
+                opacity: 1;
+            }
+        }
+    }
+}
