@@ -24,4 +24,26 @@
   <link rel="shortcut icon" href="{{ site.baseurl }}/design/icons/favicon.ico">
   <meta name="msapplication-config" content="{{ site.baseurl }}/design/icons/browserconfig.xml">
   <meta name="theme-color" content="#f06322">
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@stefcoenen" />
+  {% if page.title == "Home" %}
+    <meta name="twitter:title" content="{{ site.title }} | {{ site.tagline }}" />
+  {% else %}
+    <meta name="twitter:title" content="{{ page.title }} | {{ site.title }}" />
+  {% endif %}
+  {% if page.image %}
+  <meta name="twitter:image" content="{{ site.url }}/design/img/{{ page.image }}" />
+  {% endif %}
+
+  {% if page.title == "Home" %}
+    <meta property="og:title" content="{{ site.title }} | {{ site.tagline }}" />
+  {% else %}
+    <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
+  {% endif %}
+  {% if page.image %}
+  <meta property="og:image" content="{{ site.url }}/design/img/{{ page.image }}" />
+  {% endif %}
+
+
 </head>
